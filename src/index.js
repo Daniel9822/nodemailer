@@ -6,11 +6,13 @@ require("dotenv").config();
 const { MAILACOUNT, MAIL_PASS } = process.env;
 
 // server used to send send emails
+
+const port = process.env.PORT || 5000
 const app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/", router);
-app.listen(5000, () => console.log("Server Running"));
+app.listen(port, () => console.log(`Server Running on port ${port}`));
 
 
 const contactEmail = nodemailer.createTransport({
